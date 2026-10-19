@@ -1,0 +1,36 @@
+.tape {
+  position: absolute;
+  height: 28px;
+  opacity: 0.9;
+  border-radius: 2px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.topLeft {
+  width: 90px;
+  background: var(--tape-sky);
+  border: 1px solid rgba(155, 201, 240, 0.25);
+  top: -10px;
+  left: 40px;
+  transform: rotate(-2.5deg);
+}
+
+.topRight {
+  width: 80px;
+  background: var(--tape-mint);
+  border: 1px solid rgba(143, 211, 182, 0.25);
+  top: -8px;
+  right: 60px;
+  transform: rotate(1.8deg);
+}
+
+.midLeft {
+  width: 70px;
+  background: var(--tape-mustard);
+  border: 1px solid rgba(242, 181, 49, 0.2);
+  top: 38%;
+  left: -14px;
+  transform: rotate(90deg) translateX(-50%);
+  transform-origin: center;
+}

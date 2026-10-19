@@ -1,0 +1,116 @@
+/* ═══════════════════════════════════════════════════
+   global.css — Reset, base styles, desk texture
+═══════════════════════════════════════════════════ */
+@import './tokens.css';
+
+/* ── Reset ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--desk);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Desk surface texture — SVG noise, no image files */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+}
+
+/* ── Links ── */
+a {
+  color: inherit;
+  text-decoration-skip-ink: auto;
+}
+
+/* ── Focus ring ── */
+:focus-visible {
+  outline: 2.5px solid var(--tomato);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ── Custom scrollbar ── */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--desk);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(35, 48, 74, 0.25);
+  border-radius: 4px;
+}
+
+/* ── Visually hidden (a11y) ── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── Section dividers ── */
+.divider {
+  border: none;
+  border-top: 1.5px dashed var(--border-faint);
+  margin: var(--sp-8) 0;
+}
+
+/* ── Physical cardstock spring recoil when robot lands ── */
+.paperSurfaceRecoil {
+  animation: surfaceRecoil 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28) !important;
+}
+
+@keyframes surfaceRecoil {
+  0% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(3px) scale(0.996);
+  }
+  60% {
+    transform: translateY(-1px) scale(1.002);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

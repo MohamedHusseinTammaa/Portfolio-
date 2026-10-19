@@ -1,0 +1,148 @@
+/* ═══════════════════════════════════════════════════
+   Robot.module.css — Dynamic animations (walk, climb, jump, flip, stomp)
+═══════════════════════════════════════════════════ */
+
+.robot {
+  display: block;
+  width: 72px;
+  overflow: visible;
+  filter: drop-shadow(0 2px 4px rgba(35, 48, 74, 0.15));
+}
+
+/* ── Sub-part origins for rotation ── */
+.legL  { transform-origin: 28px 64px; }
+.legR  { transform-origin: 44px 64px; }
+.armL  { transform-origin: 17px 38px; }
+.armR  { transform-origin: 55px 38px; }
+.antennaTip { transform-origin: 36px 16px; }
+.eyeL, .eyeR { transform-origin: center; }
+
+/* ════ WALKING STATE ════ */
+.walking .bodyGroup { animation: bodyBob 0.35s infinite ease-in-out; }
+.walking .legL      { animation: legLWalk 0.35s infinite ease-in-out; }
+.walking .legR      { animation: legRWalk 0.35s infinite ease-in-out; }
+.walking .armL      { animation: armLWalk 0.35s infinite ease-in-out; }
+.walking .armR      { animation: armRWalk 0.35s infinite ease-in-out; }
+
+@keyframes bodyBob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-3px); }
+}
+@keyframes legLWalk {
+  0%, 100% { transform: rotate(24deg); }
+  50%      { transform: rotate(-24deg); }
+}
+@keyframes legRWalk {
+  0%, 100% { transform: rotate(-24deg); }
+  50%      { transform: rotate(24deg); }
+}
+@keyframes armLWalk {
+  0%, 100% { transform: rotate(-20deg); }
+  50%      { transform: rotate(20deg); }
+}
+@keyframes armRWalk {
+  0%, 100% { transform: rotate(20deg); }
+  50%      { transform: rotate(-20deg); }
+}
+
+/* ════ CLIMBING STATE ════ */
+.climbing .bodyGroup { animation: climbBob 0.4s infinite ease-in-out; }
+.climbing .armL      { animation: climbArmL 0.4s infinite ease-in-out; }
+.climbing .armR      { animation: climbArmR 0.4s infinite ease-in-out; }
+.climbing .legL      { animation: climbLegL 0.4s infinite ease-in-out; }
+.climbing .legR      { animation: climbLegR 0.4s infinite ease-in-out; }
+
+@keyframes climbBob {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50%      { transform: translateY(-4px) rotate(2deg); }
+}
+@keyframes climbArmL {
+  0%, 100% { transform: rotate(-80deg); }
+  50%      { transform: rotate(-30deg); }
+}
+@keyframes climbArmR {
+  0%, 100% { transform: rotate(-30deg); }
+  50%      { transform: rotate(-80deg); }
+}
+@keyframes climbLegL {
+  0%, 100% { transform: translateY(-6px) rotate(15deg); }
+  50%      { transform: translateY(0px) rotate(-10deg); }
+}
+@keyframes climbLegR {
+  0%, 100% { transform: translateY(0px) rotate(-10deg); }
+  50%      { transform: translateY(-6px) rotate(15deg); }
+}
+
+/* ════ JUMPING / AIRBORNE STATE ════ */
+.jumping .bodyGroup { transform: translateY(-2px); }
+.jumping .legL      { transform: translateY(-5px) rotate(12deg); }
+.jumping .legR      { transform: translateY(-5px) rotate(-12deg); }
+.jumping .armL      { transform: rotate(-45deg); }
+.jumping .armR      { transform: rotate(-20deg); }
+.jumping .antennaTip { transform: rotate(-10deg); }
+
+/* ════ FLIP STATE (ACROBATIC BACKFLIP) ════ */
+.flip {
+  animation: backflipSpin 0.75s cubic-bezier(0.4, 0.0, 0.2, 1) forwards;
+  transform-origin: center center;
+}
+@keyframes backflipSpin {
+  0%   { transform: rotate(0deg) translateY(0); }
+  25%  { transform: rotate(-90deg) translateY(-25px); }
+  50%  { transform: rotate(-180deg) translateY(-40px); }
+  75%  { transform: rotate(-270deg) translateY(-20px); }
+  100% { transform: rotate(-360deg) translateY(0); }
+}
+
+/* ════ STOMP STATE (HEAVY PAPER IMPACT) ════ */
+.stomp {
+  animation: heavyStomp 0.5s ease-out forwards;
+  transform-origin: bottom center;
+}
+@keyframes heavyStomp {
+  0%   { transform: translateY(-16px) scaleY(1.05); }
+  40%  { transform: translateY(0) scaleY(0.7) scaleX(1.3); }
+  70%  { transform: translateY(-4px) scaleY(1.02); }
+  100% { transform: translateY(0) scaleY(1) scaleX(1); }
+}
+
+/* ════ IDLE STATE ════ */
+.idle .antennaTip { animation: antennaWiggle 2.5s infinite ease-in-out; }
+.idle .eyeL,
+.idle .eyeR { animation: eyeBlink 3.8s infinite; }
+.idle .bodyGroup { animation: idleBreathe 3s infinite ease-in-out; }
+
+@keyframes antennaWiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25%      { transform: rotate(10deg); }
+  75%      { transform: rotate(-10deg); }
+}
+@keyframes eyeBlink {
+  0%, 90%, 100% { transform: scaleY(1); }
+  95%           { transform: scaleY(0.1); }
+}
+@keyframes idleBreathe {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-1.5px); }
+}
+
+/* ════ WAVING STATE ════ */
+.waving .armL { animation: waveArm 1.1s ease-in-out; }
+@keyframes waveArm {
+  0%, 100% { transform: rotate(0deg); }
+  25%      { transform: rotate(-70deg); }
+  50%      { transform: rotate(-35deg); }
+  75%      { transform: rotate(-70deg); }
+}
+
+/* ════ YAWNING STATE ════ */
+.yawning .bodyGroup { animation: yawnStretch 2s ease-in-out; }
+@keyframes yawnStretch {
+  0%, 100% { transform: scaleY(1) scaleX(1); }
+  40%      { transform: scaleY(1.1) scaleX(0.95); }
+}
+
+/* ── Mobile ── */
+@media (max-width: 600px) {
+  .robot { width: 56px; }
+}

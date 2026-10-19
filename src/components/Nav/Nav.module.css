@@ -1,0 +1,50 @@
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 90;
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  padding: 0 var(--sp-4);
+  pointer-events: none;
+}
+
+.tab {
+  pointer-events: all;
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  color: var(--ink);
+  text-decoration: none;
+  background: var(--paper);
+  border: 1.5px solid var(--border-faint);
+  border-bottom: none;
+  padding: 0.3rem 0.9rem 0.5rem;
+  margin-right: -1px;
+  border-radius: 6px 6px 0 0;
+  transition: background 0.2s, transform 0.15s, color 0.2s;
+  position: relative;
+  top: 2px;
+  box-shadow: 0 -2px 6px rgba(35, 48, 74, 0.07);
+}
+
+.tab:hover,
+.tab:focus-visible {
+  background: var(--mustard);
+  color: var(--ink);
+  transform: translateY(-3px);
+  outline: none;
+  z-index: 2;
+}
+
+.active {
+  background: var(--paper);
+  top: 0;
+  font-size: var(--text-base);
+}
+
+/* Hide overflow on very narrow screens */
+@media (max-width: 480px) {
+  .nav { overflow-x: auto; justify-content: flex-start; gap: 0; }
+  .tab { font-size: var(--text-xs); padding: 0.25rem 0.6rem 0.4rem; }
+  .active { font-size: var(--text-sm); }
+}

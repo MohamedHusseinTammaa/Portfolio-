@@ -1,0 +1,105 @@
+.hero {
+  text-align: left;
+  padding-bottom: var(--sp-8);
+  border-bottom: 1.5px dashed var(--border-faint);
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-3xl), 8vw, var(--text-4xl));
+  color: var(--ink);
+  line-height: 1.05;
+  letter-spacing: -0.5px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  color: var(--tomato);
+  margin: var(--sp-2) 0 var(--sp-4);
+}
+
+.location {
+  font-size: var(--text-sm);
+  color: var(--ink);
+  opacity: 0.6;
+  margin-bottom: var(--sp-4);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.pitch {
+  font-size: var(--text-lg);
+  max-width: 62ch;
+  color: var(--ink);
+  opacity: 0.85;
+  margin-bottom: var(--sp-6);
+}
+
+.buttons {
+  display: flex;
+  gap: var(--sp-4);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* Stamp-style button */
+.stamp {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  color: var(--paper);
+  background: var(--tomato);
+  padding: 0.45rem 1.4rem;
+  border: 2.5px solid var(--tomato);
+  border-radius: 4px;
+  display: inline-block;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 2px 3px 0 rgba(35, 48, 74, 0.2);
+  cursor: pointer;
+}
+.stamp:hover,
+.stamp:focus-visible {
+  transform: translate(-1px, -2px);
+  box-shadow: 4px 5px 0 rgba(35, 48, 74, 0.22);
+  outline: none;
+}
+
+.outline {
+  color: var(--tomato);
+  background: transparent;
+  border-color: var(--tomato);
+}
+.outline:hover { background: var(--tomato); color: var(--paper); }
+
+/* Opportunity sticker */
+.sticker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--mint);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  padding: 0.3rem 0.8rem;
+  border-radius: 40px;
+  border: 2px solid var(--border-faint);
+  transform: rotate(-1.5deg);
+  box-shadow: 1px 2px 0 rgba(35, 48, 74, 0.15);
+  white-space: nowrap;
+}
+.sticker::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--tomato);
+  animation: pulseDot 2s infinite;
+}
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.5; transform: scale(1.4); }
+}

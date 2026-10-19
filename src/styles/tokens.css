@@ -1,0 +1,75 @@
+/* ═══════════════════════════════════════════════════
+   tokens.css — Design tokens (colours, type, spacing)
+   Edit colours here to re-skin the entire site.
+═══════════════════════════════════════════════════ */
+
+:root {
+  /* ── Palette ── */
+  --paper:   #FBF6EA;
+  --desk:    #E9DCC3;
+  --ink:     #23304A;
+  --tomato:  #E5533D;
+  --mustard: #F2B531;
+  --mint:    #8FD3B6;
+  --sky:     #9CC9F0;
+
+  /* Derived */
+  --paper-shadow:      rgba(35, 48, 74, 0.18);
+  --tape-sky:          rgba(159, 210, 246, 0.55);
+  --tape-mint:         rgba(143, 211, 182, 0.55);
+  --tape-mustard:      rgba(242, 181, 49, 0.45);
+  --highlight-yellow:  rgba(242, 181, 49, 0.38);
+  --highlight-mint:    rgba(143, 211, 182, 0.42);
+  --border-faint:      rgba(35, 48, 74, 0.12);
+  --border-medium:     rgba(35, 48, 74, 0.20);
+  --ink-fade:          rgba(35, 48, 74, 0.06);
+
+  /* ── Typography ── */
+  --font-display: 'Caveat Brush', cursive;
+  --font-body:    'Karla', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+
+  /* Type scale */
+  --text-xs:   0.75rem;
+  --text-sm:   0.875rem;
+  --text-base: 1rem;
+  --text-lg:   1.125rem;
+  --text-xl:   1.5rem;
+  --text-2xl:  2rem;
+  --text-3xl:  2.75rem;
+  --text-4xl:  3.75rem;
+
+  /* ── Spacing ── */
+  --sp-1:  0.25rem;
+  --sp-2:  0.5rem;
+  --sp-3:  0.75rem;
+  --sp-4:  1rem;
+  --sp-6:  1.5rem;
+  --sp-8:  2rem;
+  --sp-12: 3rem;
+  --sp-16: 4rem;
+
+  /* ── Paper ── */
+  --paper-width:   min(920px, 92vw);
+  --paper-padding: clamp(1.5rem, 4vw, 3rem);
+}
+
+/* ── Dark mode — same personality, dim desk, warm lamp-lit paper ── */
+[data-theme='dark'] {
+  --paper:            #2C2820;
+  --desk:             #1A1612;
+  --ink:              #EDE5D0;
+  --tomato:           #F06A52;
+  --mustard:          #F5C453;
+  --mint:             #6EC8A4;
+  --sky:              #7BB8E8;
+  --paper-shadow:     rgba(0, 0, 0, 0.55);
+  --tape-sky:         rgba(123, 184, 232, 0.28);
+  --tape-mint:        rgba(110, 200, 164, 0.28);
+  --tape-mustard:     rgba(245, 196, 83, 0.28);
+  --highlight-yellow: rgba(245, 196, 83, 0.22);
+  --highlight-mint:   rgba(110, 200, 164, 0.22);
+  --border-faint:     rgba(237, 229, 208, 0.10);
+  --border-medium:    rgba(237, 229, 208, 0.18);
+  --ink-fade:         rgba(237, 229, 208, 0.06);
+}

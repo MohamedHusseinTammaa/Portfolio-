@@ -1,0 +1,13 @@
+.appContainer {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.desk {
+  flex: 1;
+  position: relative;
+  padding: var(--sp-8) var(--sp-4) var(--sp-16);
+  z-index: 1;
+}

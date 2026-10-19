@@ -1,0 +1,189 @@
+/* ═══════════════════════════════════════════════════
+   RobotCompanion.module.css — Physical robot, shadow, and paper impression
+═══════════════════════════════════════════════════ */
+
+.companionWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 60;
+  pointer-events: none;
+  transition: none; /* Position is driven frame-by-frame by GSAP for 60fps */
+}
+
+/* ── Interactive Click Hitbox around Robot ── */
+.robotHitbox {
+  pointer-events: auto;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.flipped {
+  transform: scaleX(-1);
+}
+
+/* ── Ground Shadow underneath feet on the Paper Surface ── */
+.groundShadow {
+  position: absolute;
+  bottom: 6px;
+  left: 50%;
+  width: 48px;
+  height: 12px;
+  margin-left: -24px;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(35, 48, 74, 0.42) 0%,
+    rgba(35, 48, 74, 0.15) 55%,
+    transparent 80%
+  );
+  pointer-events: none;
+  z-index: 1;
+  transform-origin: center center;
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1),
+              opacity 0.2s ease,
+              filter 0.2s ease;
+}
+
+:global([data-theme='dark']) .groundShadow {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0.65) 0%,
+    rgba(0, 0, 0, 0.25) 55%,
+    transparent 80%
+  );
+}
+
+/* When the robot is high in the air, the shadow shrinks & diffuses */
+.shadowAir {
+  transform: scale(0.42);
+  opacity: 0.2;
+  filter: blur(2px);
+}
+
+/* When the robot stomps / lands, the shadow squashes wide & darkens */
+.shadowSquash {
+  transform: scale(1.45, 0.65);
+  opacity: 0.75;
+}
+
+/* ── Robot Sprite Body (Squash & Stretch during jumps) ── */
+.robotBody {
+  position: relative;
+  z-index: 2;
+  transform-origin: bottom center;
+  transition: transform 0.15s ease-out;
+}
+
+.bodyAirborne {
+  transform: translateY(-8px) scale(0.95, 1.08);
+}
+
+.bodySquash {
+  transform: translateY(4px) scale(1.3, 0.7);
+}
+
+/* ── Paper Dent / Pressing Ripple Impression on the Paper Sheet ── */
+.paperDentContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.dentRipple {
+  position: absolute;
+  width: 58px;
+  height: 22px;
+  margin-left: -29px;
+  margin-top: -11px;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: dentImpression 2.2s cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
+}
+
+/* Soft paper indentation shading */
+.dentRing {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  box-shadow:
+    inset 0 2px 4px rgba(35, 48, 74, 0.26),
+    inset 0 -1.5px 3px rgba(255, 255, 255, 0.6),
+    0 2px 6px rgba(35, 48, 74, 0.08);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(35, 48, 74, 0.07) 0%,
+    transparent 70%
+  );
+}
+
+:global([data-theme='dark']) .dentRing {
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.5),
+    inset 0 -1px 2px rgba(255, 255, 255, 0.1),
+    0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Two rubber shoe sole tread marks in the paper */
+.treadL,
+.treadR {
+  position: absolute;
+  top: 6px;
+  width: 7px;
+  height: 10px;
+  border-radius: 2px;
+  border-bottom: 2px solid rgba(35, 48, 74, 0.35);
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  opacity: 0.7;
+}
+
+.treadL { left: 16px; }
+.treadR { right: 16px; }
+
+@keyframes dentImpression {
+  0% {
+    transform: scale(0.65);
+    opacity: 0.95;
+  }
+  20% {
+    transform: scale(1.15);
+    opacity: 0.8;
+  }
+  60% {
+    transform: scale(1.25);
+    opacity: 0.45;
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+/* ── Interactive Summon Target Marker (briefly pulses when user clicks paper) ── */
+.summonMarker {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  margin-left: -12px;
+  margin-top: -12px;
+  pointer-events: none;
+  animation: summonPulse 0.8s ease-out forwards;
+}
+
+@keyframes summonPulse {
+  0% {
+    transform: scale(0.3);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}

@@ -1,0 +1,32 @@
+.note {
+  color: var(--ink);
+  border-radius: 2px;
+  padding: var(--sp-4);
+  min-width: 150px;
+  max-width: 220px;
+  box-shadow:
+    3px 3px 8px rgba(35, 48, 74, 0.15),
+    inset 0 -20px 0 rgba(35, 48, 74, 0.05);
+  position: relative;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Adhesive strip at the top */
+.note::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 4px;
+  background: rgba(35, 48, 74, 0.08);
+}
+
+/* Hover lifts and straightens */
+.note:hover {
+  transform: rotate(0deg) scale(1.04) !important;
+  box-shadow: 6px 8px 20px rgba(35, 48, 74, 0.2);
+  z-index: 5;
+}
+
+.invert { color: var(--paper); }

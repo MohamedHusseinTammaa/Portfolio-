@@ -1,0 +1,80 @@
+/* ═══════════════════════════════════════════════════
+   SpeechBubble.module.css
+═══════════════════════════════════════════════════ */
+
+.bubble {
+  position: absolute;
+  bottom: 82px;
+  left: 4px;
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  padding: 0.4rem 0.7rem;
+  min-width: 180px;
+  max-width: 280px;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--ink);
+  line-height: 1.5;
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 2px 3px 8px rgba(35, 48, 74, 0.12);
+  z-index: 10;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Triangle pointer */
+.bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -9px;
+  left: 18px;
+  border-width: 8px 6px 0;
+  border-style: solid;
+  border-color: var(--ink) transparent transparent;
+}
+.bubble::before {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 20px;
+  border-width: 6px 5px 0;
+  border-style: solid;
+  border-color: var(--paper) transparent transparent;
+  z-index: 1;
+}
+
+.text {
+  color: var(--ink);
+}
+
+/* Blinking cursor */
+.cursor {
+  display: inline-block;
+  width: 7px;
+  height: 12px;
+  background: var(--tomato);
+  vertical-align: middle;
+  margin-left: 1px;
+  animation: cursorBlink 0.8s step-end infinite;
+}
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+
+/* ── Mobile ── */
+@media (max-width: 600px) {
+  .bubble {
+    font-size: 0.65rem;
+    min-width: 140px;
+    max-width: 200px;
+  }
+}

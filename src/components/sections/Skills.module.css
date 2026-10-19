@@ -1,0 +1,121 @@
+.section {
+  margin-bottom: var(--sp-12);
+  position: relative;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-6);
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  color: var(--ink);
+  margin: 0;
+  display: inline-block;
+  position: relative;
+}
+
+.heading::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--mustard);
+  border-radius: 2px;
+  transform: rotate(-0.5deg);
+}
+
+.subDoodle {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--ink);
+  opacity: 0.6;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--sp-4);
+}
+
+.card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.45);
+  border: 1.5px dashed var(--border-medium);
+  border-radius: 6px;
+  padding: var(--sp-4);
+  box-shadow: 2px 3px 8px rgba(35, 48, 74, 0.05);
+  transform: rotate(calc((var(--card-idx) % 2 == 0 ? 0.6deg : -0.6deg)));
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+:global([data-theme='dark']) .card {
+  background: rgba(0, 0, 0, 0.22);
+}
+
+.card:hover {
+  transform: translateY(-2px) rotate(0deg);
+  box-shadow: 3px 6px 14px rgba(35, 48, 74, 0.12);
+}
+
+.pin {
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--tomato);
+  border: 1px solid var(--ink);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.categoryTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  color: var(--ink);
+  margin: var(--sp-1) 0 var(--sp-3) 0;
+  letter-spacing: 0.5px;
+}
+
+.tags {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--border-medium);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  box-shadow: 1px 1px 0 var(--border-faint);
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.tag:hover {
+  transform: scale(1.05) rotate(-1deg);
+  background: var(--highlight-yellow);
+  border-color: var(--mustard);
+}

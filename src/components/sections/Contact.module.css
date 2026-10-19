@@ -1,0 +1,238 @@
+.section {
+  margin-bottom: var(--sp-12);
+  position: relative;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-6);
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  color: var(--ink);
+  margin: 0;
+  display: inline-block;
+  position: relative;
+}
+
+.heading::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--mint);
+  border-radius: 2px;
+  transform: rotate(0.6deg);
+}
+
+.subNote {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--ink);
+  opacity: 0.6;
+}
+
+.envelope {
+  position: relative;
+  background: rgba(255, 255, 255, 0.45);
+  border: 2px dashed var(--border-medium);
+  border-radius: 8px;
+  padding: var(--sp-6);
+  box-shadow: 2px 4px 12px rgba(35, 48, 74, 0.06);
+  overflow: hidden;
+}
+
+:global([data-theme='dark']) .envelope {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.postmark {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.35;
+  pointer-events: none;
+  transform: rotate(-8deg);
+}
+
+.postmarkCircle {
+  width: 52px;
+  height: 52px;
+  border: 1.5px solid var(--ink);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--ink);
+}
+
+.postmarkDate {
+  font-size: 6px;
+  font-weight: 400;
+}
+
+.wavyLines {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.wavyLines span {
+  display: block;
+  width: 32px;
+  height: 2px;
+  background: var(--ink);
+  border-radius: 2px;
+}
+
+.intro {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--ink);
+  line-height: 1.6;
+  margin: 0 0 var(--sp-6) 0;
+  max-width: 620px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--sp-5) var(--sp-8);
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.itemLabel {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--ink);
+  opacity: 0.6;
+}
+
+.actionRow {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+}
+
+.itemLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--tomato);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  word-break: break-all;
+  transition: opacity 0.15s ease;
+}
+
+.itemLink:hover {
+  opacity: 0.8;
+}
+
+.itemLinkWithLogo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--ink);
+  text-decoration: none;
+  background: var(--paper);
+  border: 1.5px solid var(--border-medium);
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  box-shadow: 1.5px 2px 0 var(--border-medium);
+  transition: transform 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  word-break: break-all;
+}
+
+.itemLinkWithLogo:hover {
+  transform: translate(-1px, -1px);
+  background: var(--highlight-yellow);
+  border-color: var(--ink);
+  box-shadow: 2.5px 3px 0 var(--ink);
+}
+
+.logoIcon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.linkedinLogo {
+  color: #0A66C2;
+}
+
+:global([data-theme='dark']) .linkedinLogo {
+  color: #70B5F9;
+}
+
+.githubLogo {
+  color: var(--ink);
+}
+
+.itemPlain {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--ink);
+}
+
+.copyButton {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--border-medium);
+  border-radius: 4px;
+  padding: 0.15rem 0.5rem;
+  cursor: pointer;
+  box-shadow: 1px 1px 0 var(--border-medium);
+  transition: all 0.15s ease;
+}
+
+.copyButton:hover {
+  background: var(--mint);
+  border-color: var(--ink);
+}
+
+@media (max-width: 600px) {
+  .envelope {
+    padding: var(--sp-4);
+  }
+
+  .postmark {
+    display: none;
+  }
+}
