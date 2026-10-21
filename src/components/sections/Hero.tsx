@@ -19,7 +19,7 @@ export default function Hero() {
       <p className={styles.pitch}>{pitch}</p>
 
       <div className={styles.buttons}>
-        <a href="Mohamed Hussein Resume.pdf" className={styles.stamp} download aria-label="Download CV as PDF">
+        <a href={`${import.meta.env.BASE_URL}Mohamed Hussein Resume.pdf`} className={styles.stamp} download aria-label="Download CV as PDF">
           📄 Download CV
         </a>
         <a href="#contact" className={`${styles.stamp} ${styles.outline}`} aria-label="Scroll to contact section">
